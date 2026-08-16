@@ -681,3 +681,39 @@ header nav a:hover::after {
   }
 
 }
+/* Container styling to center the button */
+.reserve {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+}
+
+/* Button styling */
+.reserve a {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: #e67e22; /* Warm restaurant orange */
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Hover and active states */
+.reserve a:hover {
+  background-color: #d35400; /* Darker orange */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.reserve a:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
