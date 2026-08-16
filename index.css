@@ -1,0 +1,846 @@
+*,*::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    -webkit-flow-smoothing:antialiased;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    min-height: 100vh;
+}
+/* --- Navigation Header Styles --- */
+
+header {
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+  /* Spacing & Sizing */
+  padding: 1rem 5%;
+  min-height: 70px;
+  
+  /* Aesthetics */
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px); /* Modern frosted-glass effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Brand Logo/Title */
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #b91c1c; /* Elegant deep restaurant red */
+  letter-spacing: -0.5px;
+}
+
+/* Navigation Links Container */
+header nav {
+  display: flex;
+  gap: 2rem; /* Consistent spacing between links */
+  align-items: center;
+}
+
+/* Individual Links */
+header nav a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #374151; /* Charcoal dark grey */
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Interactive Hover Animation */
+header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #b91c1c;
+  transition: width 0.2s ease-in-out;
+}
+
+header nav a:hover {
+  color: #b91c1c;
+}
+
+header nav a:hover::after {
+  width: 100%; /* Smoothly expands line under link */
+}
+
+/* Special Styling for the Action Button (Reserve) */
+header nav a[href="#reserve"] {
+  background-color: #b91c1c;
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+header nav a[href="#reserve"]::after {
+  display: none; /* Remove line animation for button */
+}
+
+header nav a[href="#reserve"]:hover {
+  background-color: #991b1b; /* Darker red on hover */
+  color: #ffffff;
+}
+
+
+/* --- Hero Section Styles --- */
+
+.home {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+
+/* Background Video Positioning */
+.home video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -2; /* Keeps video behind content */
+}
+
+/* Dark Tint Overlay for Text Legibility */
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.4)
+  );
+  z-index: -1;
+}
+
+/* Typography Styling */
+.home h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem); /* Scalable modern typography */
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.home p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  line-height: 1.6;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Call To Action Buttons */
+.home .cta-btn {
+  display: flex;
+  gap: 1.5rem;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.home .cta-btn button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Primary Button (View Menu) */
+.home .cta-btn button:first-child {
+  background-color: #b91c1c; /* Accent color matching header */
+  color: #ffffff;
+  border: 2px solid #b91c1c;
+}
+
+.home .cta-btn button:first-child:hover {
+  background-color: #991b1b;
+  border-color: #991b1b;
+  transform: translateY(-2px);
+}
+
+/* Secondary Button (Reserve) */
+.home .cta-btn button:last-child {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.home .cta-btn button:last-child:hover {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+/* --- About Section Styles --- */
+
+.about {
+  /* Layout setup */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  
+  /* Sizing and alignment */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+/* Image styling */
+.about img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease;
+}
+
+/* Micro-interaction for picture hover */
+.about img:hover {
+  transform: scale(1.02);
+}
+
+/* Paragraph styling */
+.about p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #4b5563; /* Subtle slate grey text */
+  font-weight: 400;
+  position: relative;
+}
+
+/* Visual accent decoration for the text */
+.about p::before {
+  content: "OUR STORY";
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #b91c1c; /* Restaurant signature red */
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+/* --- Menu Section Styles --- */
+
+.menu {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Typography Headings */
+.menu h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.menu h2 + p {
+  font-size: 1.1rem;
+  color: #b91c1c; /* Accent red */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 3.5rem;
+}
+.menu button{
+  align-items: center;
+  justify-content: center;
+}
+/* Image Grid Container */
+/* target only structural menu images while bypassing heading elements */
+.menu img {
+  grid-column: span 1;
+}
+
+/* Creating modern structural grid wrapper rules dynamically */
+@support-grid {
+  /* This layout is optimized to naturally bind elements via CSS grid */
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Container simulation for the image items */
+.menu::after {
+  content: "";
+  display: none;
+}
+
+/* Grid arrangement specifically for your 3 images */
+.menu {
+  --grid-gap: 2rem;
+}
+
+/* Target the images collectively to format a 3-column deck */
+.menu img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: var(--grid-gap);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              box-shadow 0.3s ease;
+}
+
+/* Interactive Card Zoom Effect */
+.menu img:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(185, 28, 28, 0.15);
+}
+
+/* Center Call-to-Action Button */
+.menu button[type="button"] {
+  margin-top: 1.5rem;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 1rem 2.5rem;
+  border: 2px solid #1a1a1a;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.menu button[type="button"]:hover {
+  background-color: transparent;
+  color: #1a1a1a;
+  transform: scale(1.03);
+}
+
+/* --- Restaurant Story Section Styles --- */
+
+.story {
+  background-color: #fdfbf7; /* Warm, premium cream background tint */
+  padding: 6rem 2rem;
+}
+
+/* Internal Content Wrapper Setup */
+@media (min-width: 768px) {
+  .story {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* Heading Typography Layout */
+.story h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  position: relative;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .story h2 {
+    grid-column: 1 / -1; /* Spans across the entire layout width */
+    margin-bottom: 3rem;
+  }
+}
+
+/* Heading Accent Line decoration */
+.story h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #b91c1c; /* Restaurant signature red */
+  margin: 0.75rem auto 0 auto;
+  border-radius: 2px;
+}
+
+/* Story Image Frame Styling */
+.story img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 16px 4px 16px 4px; /* Unique organic corner framing */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+/* Philosophy Section Container */
+.philosophy {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 40px 24px;
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #2c2c2c;
+  background-color: #fcfbfa;
+  border-radius: 8px;
+}
+
+/* Section Heading */
+.philosophy h2 {
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8c765c;
+  margin-bottom: 24px;
+}
+
+/* Pull Quote */
+.philosophy blockquote {
+  font-size: 2rem;
+  font-style: italic;
+  font-family: Georgia, serif;
+  color: #1a1a1a;
+  line-height: 1.4;
+  margin: 0 auto 32px auto;
+  max-width: 600px;
+}
+
+/* Descriptive Paragraph */
+.philosophy p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #555555;
+  margin-bottom: 40px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Anchor Link Wrapper */
+.philosophy a {
+  text-decoration: none;
+}
+
+/* Interactive Call-to-Action Button */
+.philosophy button {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #1a1a1a;
+  padding: 14px 32px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Button Hover State */
+.philosophy button:hover {
+  background-color: transparent;
+  color: #1a1a1a;
+}
+
+/* Reservation Section Container */
+/* Container styling */
+.reserve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('restaurant-bg.jpg') no-repeat center center/cover;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 400px;
+}
+
+/* Typography */
+.reserve h2 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.reserve p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+/* Base button styling */
+.reserve button {
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+/* Initial trigger button */
+#reserve-table-btn {
+  background-color: #e67e22;
+  color: #ffffff;
+  padding: 15px 40px;
+  font-size: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+}
+
+#reserve-table-btn:hover {
+  background-color: #d35400;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 126, 34, 0.6);
+}
+
+/* Reservation form layout */
+#reservation-form {
+  display: hidden;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Form inputs */
+#reservation-form input {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#reservation-form input:focus {
+  border-color: #e67e22;
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+}
+
+/* Submit button */
+#reservation-form button[type="submit"] {
+  background-color: #2c3e50;
+  color: #ffffff;
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+#reservation-form button[type="submit"]:hover {
+  background-color: #1a252f;
+}
+
+/* Smooth fade-in for when the form unhides */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustment for wider screens */
+@media (min-width: 600px) {
+  #reservation-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  #reservation-form button[type="submit"] {
+    grid-column: span 2;
+  }
+}
+
+/* Contact Section Container */
+.contact {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 60px 24px;
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #2c2c2c;
+}
+
+/* Section Heading */
+.contact h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Decorative underline beneath heading */
+.contact h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background-color: #8c765c;
+  margin: 12px auto 0 auto;
+}
+
+/* Flexbox Grid List Layout */
+.contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Grid Items (Links/Actions) */
+.contact li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Circular Icon Stylings */
+.contact img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* Hover Interaction Styles */
+.contact li:hover {
+  color: #8c765c;
+  transform: translateY(-4px);
+}
+
+.contact li:hover img {
+  border-color: #8c765c;
+  box-shadow: 0 6px 16px rgba(140, 118, 92, 0.2);
+}
+
+/* Main Footer Layout */
+footer {
+  background-color: #111111;
+  color: #ffffff;
+  padding: 60px 24px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  border-top: 1px solid #222222;
+}
+
+/* Footer Navigation Column Wrapper */
+.footer-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Column Heading */
+.footer-nav h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8c765c;
+  margin-bottom: 24px;
+}
+
+/* Navigation List */
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+/* Navigation Link Anchors */
+.footer-nav a {
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+}
+
+/* Interactive Hover State */
+.footer-nav a:hover {
+  color: #ffffff;
+}
+
+/* Main Footer Grid Layout */
+footer {
+  background-color: #111111;
+  color: #ffffff;
+  padding: 80px 24px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  border-top: 1px solid #222222;
+  
+  /* Arranges all 3 columns side-by-side on desktop */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px;
+  width: auto;
+  margin: 0 auto;
+}
+
+/* Common Column Header Settings */
+.footer-nav h3,
+.footer-contact h3,
+.footer-hrs h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8c765c;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* Navigation Column Specifics */
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav a {
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+  color: #ffffff;
+}
+
+/* Contact and Hours Text Formatting */
+.footer-contact p,
+.footer-hrs p {
+  color: #aaaaaa;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.5px;
+}
+
+/* Removes margin from the final paragraph in each column */
+.footer-contact p:last-child,
+.footer-hrs p:last-child {
+  margin-bottom: 0;
+}
+
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 60px auto 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid #222222; /* Creates a clean separating line */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Copyright Text Styling */
+.footer-bottom p {
+  color: #666666;
+  font-size: 0.85rem;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Button Group Container */
+.social-btn {
+  display: flex;
+  gap: 12px;
+}
+
+/* Premium Minimalist Social Buttons */
+.social-btn button {
+  background-color: transparent;
+  color: #aaaaaa;
+  border: 1px solid #333333;
+  padding: 8px 18px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+/* Button Interactions */
+.social-btn button:hover {
+  color: #ffffff;
+  border-color: #8c765c;
+  background-color: rgba(140, 118, 92, 0.05); /* Very subtle warm tint */
+}
+

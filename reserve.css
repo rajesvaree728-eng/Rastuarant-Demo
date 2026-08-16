@@ -1,0 +1,406 @@
+*,*::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    -webkit-flow-smoothing:antialiased;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    min-height: 100vh;
+}
+header {
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+  /* Spacing & Sizing */
+  padding: 1rem 5%;
+  min-height: 70px;
+  
+  /* Aesthetics */
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px); /* Modern frosted-glass effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Brand Logo/Title */
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #b91c1c; /* Elegant deep restaurant red */
+  letter-spacing: -0.5px;
+}
+
+/* Navigation Links Container */
+header nav {
+  display: flex;
+  gap: 2rem; /* Consistent spacing between links */
+  align-items: center;
+}
+
+/* Individual Links */
+header nav a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #374151; /* Charcoal dark grey */
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Interactive Hover Animation */
+header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #b91c1c;
+  transition: width 0.2s ease-in-out;
+}
+
+header nav a:hover {
+  color: #b91c1c;
+}
+
+header nav a:hover::after {
+  width: 100%; /* Smoothly expands line under link */
+}
+
+/* Special Styling for the Action Button (Reserve) */
+header nav a[href="#reserve"] {
+  background-color: #b91c1c;
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+header nav a[href="#reserve"]::after {
+  display: none; /* Remove line animation for button */
+}
+
+header nav a[href="#reserve"]:hover {
+  background-color: #991b1b; /* Darker red on hover */
+  color: #ffffff;
+}
+.head {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+.head img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -2;
+}
+.head::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.4)
+  );
+  z-index: -1;
+}
+
+/* Typography Styling */
+.head h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem); /* Scalable modern typography */
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.head p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  line-height: 1.6;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out;
+}
+/* ==========================================================================
+   MAIN COMPONENT WRAPPER (Flexbox Split Layout)
+   ========================================================================== */
+
+/* Container wrapper to split the page into Left and Right columns */
+.booking-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  max-width: 1100px;
+  width: 95%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   LEFT SIDE: RESERVATION FORM
+   ========================================================================== */
+
+.reservation-form {
+  flex: 1.2; /* Takes slightly more space than the info column */
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+/* Clean, modern styling for input labels */
+.reservation-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2b3a42;
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Unified fields for inputs and textareas */
+.reservation-form input,
+.reservation-form textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  color: #334155;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Smooth active focus states */
+.reservation-form input:focus,
+.reservation-form textarea:focus {
+  border-color: #cbd5e1;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+/* Custom dimensions specifically for the requests textarea */
+.reservation-form textarea {
+  height: 100px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* Call-to-Action Book Button */
+.reservation-form .book-table {
+  margin-top: 1.5rem;
+  background-color: #2b3a42;
+  color: #ffffff;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reservation-form .book-table:hover {
+  background-color: #1a2429;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   RIGHT SIDE: RESTAURANT INFORMATION
+   ========================================================================== */
+
+.rastaurant-info {
+  flex: 0.8; /* Slightly narrower profile for text data balance */
+  display: grid;
+  grid-template-columns: auto 1fr; /* Image icon on left, description text on right */
+  align-items: center;
+  gap: 1.2rem 1rem;
+  padding: 2rem;
+  background-color: #f8fafc;
+  border-radius: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Structured grid alignments for info block items */
+.rastaurant-info img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  grid-column: 1;
+}
+
+.rastaurant-info p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #475569;
+  grid-column: 2;
+}
+
+/* Typography emphasis highlights for headings inside info boxes */
+.rastaurant-info p br + text, 
+.rastaurant-info p {
+  font-weight: 400;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Mobile Viewports Setup)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Stacks elements vertically on smaller screens instead of horizontal split */
+  .booking-container {
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 1.5rem;
+  }
+  
+  .reservation-form, 
+  .rastaurant-info {
+    flex: none;
+    width: 100%;
+  }
+}
+footer {
+  background-color: #111111;
+  color: #ffffff;
+  padding: 60px 24px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  border-top: 1px solid #222222;
+}
+
+/* Footer Navigation Column Wrapper */
+.footer-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Column Heading */
+.footer-nav h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8c765c;
+  margin-bottom: 24px;
+}
+
+/* Navigation List */
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+/* Navigation Link Anchors */
+.footer-nav a {
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+}
+
+/* Interactive Hover State */
+.footer-nav a:hover {
+  color: #ffffff;
+}
+
+/* Main Footer Grid Layout */
+footer {
+  background-color: #111111;
+  color: #ffffff;
+  padding: 80px 24px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  border-top: 1px solid #222222;
+  
+  /* Arranges all 3 columns side-by-side on desktop */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px;
+  width: auto;
+  margin: 0 auto;
+}
+
+/* Common Column Header Settings */
+.footer-nav h3,
+.footer-contact h3,
+.footer-hrs h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8c765c;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* Navigation Column Specifics */
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav a {
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+  color: #ffffff;
+}

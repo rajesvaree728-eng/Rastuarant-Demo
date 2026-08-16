@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booking table</title>
+    <link rel="stylesheet" href="reserve.css">
+</head>
+<body>
+    <header>
+    <h1>Live Rastaurant</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="index.html">About</a>
+            <a href="#revervation-form">Reserve</a>
+            <a href="index.html">Contact</a>
+        </nav>    
+    </header>
+    <main>
+        <section class="head">
+            <img src="rastable.jpg" alt="image">
+            <h2>RESERVE A TABLE</h2>
+            <p>Book your table and enjoy an unforgettable dinning experience with us.</p>
+        </section>
+    <div class="booking-container">
+        <section class="reservation-form" id="revervation-form">
+            <label aria-placeholder="name">Full Name</label>
+            <input type="text" placeholder="Enter Your Name"> 
+
+            <label aria-placeholder="email">Email Address</label>
+            <input type="email" placeholder="Enter Your Email">
+
+            <label aria-placeholder="phone number">Phone Number</label>
+            <input type="number" placeholder="Enter Your Phone Number">
+        
+            <label aria-placeholder="date">Date</label>
+            <input type="date" placeholder="dd/mm/yyyy">
+
+            <label aria-placeholder="guests">Number of Guests</label>
+            <input type="number" placeholder="enter Number of Guests">
+
+            <label aria-placeholder="requests">Special Request(optional)</label>
+            <textarea>Let us know if you have any Special Request...</textarea>
+            
+            <button class="book-table">
+                BOOK TABLE
+            </button>
+        </section>
+        <section class="rastaurant-info">
+            <img src="address.jpg" alt="address image">
+            <p>Address <br>123 Main Street New York, NY 10010 USA</p>
+
+            <img src="phone.png" alt="phone image">
+            <p>Phone <br>+91 7666136073</p>
+
+            <img src="enail.jpg" alt="email image">
+            <p>Email <br>rajesvaree728@gmail.com</p>
+
+            <img src="opeing.png" alt="Opeming image">
+            <p>Mon-Thu 11:00 AM - 10:00 PM <br>
+                Fri- Sat 11:00 AM - 11:00 PM<br>
+                sun 12:00 PM - 9:00 PM</p>
+        </section>
+    </div>
+<footer>
+    <div class="footer-nav">
+        <h3>Navigation</h3>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reserve">Reservation</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+    <div class="footer-contact">
+        <h3>Our Location</h3>
+        <p>123 main Street Los Angles, CA</p>
+        <p>(123) 456-7890</p>
+        <p>hello@example.com</p>
+    <div class="footer-hrs">
+        <h3>Hours</h3>
+            <p>Mon-Thu: 11 AM - 10 PM</p>
+            <p>Fri-Sat: 11 AM - 11 PM</p>
+            <p>Sun: 12 PM - 9 PM</p>
+    </div>
+    <div class="footer-bottom">
+    <p>  © 2026 Bella Tavola. ALL rights reserved.</p>
+    <div class="social-btn">
+        <button>Instagram</button>
+        <button>Facebook</button>
+    </div>
+</footer>
+</main>
+</body>
+</html>
+<script>
+    document.querySelector('.book-table').addEventListener('click',function(event){
+        event.preventDefault();
+        alert('Thanks for chosing us!');
+    });
+</script>
